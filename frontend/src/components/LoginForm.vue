@@ -2,7 +2,7 @@
   <label for="login">Identifiant</label><br />
   <input type="text" name="login" id="login" v-model="login" /><br />
   <label for="mdp">Mot de passe</label><br />
-  <input type="text" name="mdp" id="mdp" v-model="mdp" /><br />
+  <input type="password" name="mdp" id="mdp" v-model="mdp" /><br />
   <button type="submit" @click="this.logIn()">Me connecter</button><br />
   <RouterLink class="link" to="/signin"
     >Vous n'avez pas encore de compte ? Inscrivez-vous !</RouterLink

@@ -5,15 +5,19 @@
       <router-link v-if="connected" class="tab" to="/about"
         >Liste des shows</router-link
       >
-      <span v-if="connected" class="tab" @click="logOut()">Se déconneter</span>
+      <router-link v-if="!connected" class="tab" to="/login"
+        >Se connecter</router-link
+      >
+      <router-link v-if="!connected" class="tab" to="/signin"
+        >S'inscrire</router-link
+      >
+      <span v-if="connected" class="tab" @click="logOut()">Se déconnecter</span>
     </div>
   </nav>
   <router-view />
 </template>
 
 <script>
-import { onMounted } from "vue";
-
 export default {
   name: "App",
   data() {
@@ -32,9 +36,11 @@ export default {
       }).then(this.$router.push("/login"));
     },
   },
-  async onMounted() {
+  async mounted() {
     if (localStorage.getItem("token")) {
       this.connected = true;
+    } else {
+      this.connected = false;
     }
   },
 };

@@ -1,4 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
+function isLoggedIn() {
+  return localStorage.getItem("token") !== null;
+}
 
 const routes = [
   {
@@ -10,6 +13,7 @@ const routes = [
     path: "/about",
     name: "about",
     component: () => import("../views/AboutView.vue"),
+    beforeEnter: [isLoggedIn],
   },
   {
     path: "/login",
@@ -25,6 +29,12 @@ const routes = [
     path: "/addShow",
     name: "addShow",
     component: () => import("../views/AddShow.vue"),
+    beforeEnter: [isLoggedIn],
+  },
+  {
+    path: "/:catchAll(.*)",
+    name: "NotFound",
+    component: () => import("../views/PageNotFound.vue"),
   },
 ];
 

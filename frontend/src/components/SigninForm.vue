@@ -64,10 +64,8 @@ export default {
         this.emptyInput = true;
 
       if (this.mdp != this.mdp2) this.wrongMdp = true;
-      if (
-        /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.login) ==
-        false
-      ) {
+      let test = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/; // eslint-disable-line
+      if (test.test(this.login) == false) {
         this.wrongEmail = true;
       }
       if (
